@@ -14,6 +14,7 @@ module.exports = {
       "@": resolve("src"),
       components: resolve("src/components"),
       assets: resolve("src/assets"),
+      "@mui/styled-engine": "@mui/styled-engine-sc",
     },
   },
 };
