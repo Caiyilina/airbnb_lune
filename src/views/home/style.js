@@ -13,6 +13,9 @@ const HomeWrapper = styled.div`
       margin: 0 -8px;
     } */
   }
+  .high-score {
+    margin-top: 30px;
+  }
 `;
 
 export default HomeWrapper;
