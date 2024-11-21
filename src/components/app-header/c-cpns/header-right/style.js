@@ -15,6 +15,7 @@ export const RightWrapper = styled.div`
     height: 18px;
     line-height: 18px;
     padding: 12px 15px;
+    box-sizing: content-box;
     span {
       cursor: pointer;
       padding: 15px 10px;

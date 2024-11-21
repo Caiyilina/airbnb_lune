@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const RoomWrapper = styled.div`
+const RoomWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "descColor",
+})`
   box-sizing: border-box;
   /* width: ${(props) => props.itemWidth}; */
   width: 25%;
@@ -32,7 +34,7 @@ const RoomWrapper = styled.div`
     font-size: 12px;
     font-weight: 700;
     /* color: #39576a; */
-    color: ${(props) => props.descColor};
+    color: ${(props) => props.descColor || "#39576a"};
   }
 
   .name {
@@ -56,14 +58,15 @@ const RoomWrapper = styled.div`
     align-items: center;
     font-size: 12px;
     font-weight: 600;
-    color: ${(props) => props.theme.color.textColor};
+    color: ${(props) => props.theme.textColor.primaryColor};
 
     .count {
       margin: 0 2px 0 4px;
     }
 
-    .MuiRating-decimal {
-      margin-right: -3px;
+    /* 评分星星间距 */
+    .ant-rate-star {
+      margin-right: 1px;
     }
   }
 `;

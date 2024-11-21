@@ -12,17 +12,22 @@ const RoomItem = memo((props) => {
           <img src={itemData.picture_url} alt="" />
         </div>
         <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
-        <div className="name" title={itemData.name}>
+        <div className="name" title={itemData?.name}>
           {itemData.name}
         </div>
-        <div className="price">{itemData.price_format}/晚</div>
+        <div className="price">{itemData?.price_format}/晚</div>
         <div className="bottom">
           <Rate
             allowHalf
             disabled
-            defaultValue={2.5}
-            style={{ fontSize: "12px", color: "#00848a" }}
+            defaultValue={itemData?.star_rating ?? 5}
+            style={{
+              fontSize: "12px",
+              color: itemData?.star_rating_color || "#00848a",
+            }}
           />
+          <span className="count">{itemData?.reviews_count}</span>
+          <span className="extra">{itemData?.bottom_info?.content}</span>
         </div>
       </div>
     </RoomWrapper>
