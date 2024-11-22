@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const TabsWrapper = styled.div`
   display: flex;
-
+  position: relative;
   .tab-item {
     background-color: #fff;
     box-sizing: border-box;

@@ -26,3 +26,21 @@ export function getHomeHotRecommendData() {
     url: "/home/hotrecommenddest",
   });
 }
+
+// 获取向往城市数据
+export function getHomeLongforData() {
+  return request.get({
+    url: "/home/longfor",
+  });
+}
+
+/**
+ * 获取plus房源
+ * @function getHomePlusData
+ * @return {Promise}
+ */
+export function getHomePlusData() {
+  return request.get({
+    url: "/home/plus",
+  });
+}

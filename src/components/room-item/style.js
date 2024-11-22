@@ -4,6 +4,7 @@ const RoomWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "descColor" || prop !== "itemWidth",
 })`
   box-sizing: border-box;
+  flex-shrink: 0; // 防止缩小
   width: ${(props) => props?.itemWidth || "25%"};
   /* width: 25%; */
   padding: 8px;
