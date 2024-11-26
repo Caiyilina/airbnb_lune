@@ -11,7 +11,7 @@ const HeaderLeft = memo(() => {
   };
   return (
     <LeftWrapper>
-      <div className="logo" onClick={() => goHome()}>
+      <div className="logo" onClick={goHome}>
         <IconLogo />
       </div>
     </LeftWrapper>
