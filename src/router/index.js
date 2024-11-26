@@ -22,6 +22,10 @@ const routes = [
     element: <Detail />,
   },
   {
+    path: "/detail/:id",
+    element: <Detail />,
+  },
+  {
     path: "/demo",
     element: <Demo />,
   },

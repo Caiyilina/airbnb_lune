@@ -6,12 +6,16 @@ import Indicator from "@/base-ui/indicator";
 import classNames from "classnames";
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = "25%" } = props;
+  const { itemData, itemWidth = "25%", itemClick } = props;
   const [selectIndex, setSelectIndex] = useState(0);
 
   const carouselChangeHandle = (index) => {
     console.log("carouselChangeHandle", index);
     setSelectIndex(index);
+  };
+
+  const itemClickHandle = () => {
+    itemClick && itemClick(itemData);
   };
 
   const pictureElement = (
@@ -54,7 +58,7 @@ const RoomItem = memo((props) => {
       itemWidth={itemWidth}
       descColor={itemData?.verify_info?.text_color || "#39576a"}
     >
-      <div className="inner">
+      <div className="inner" onClick={(e) => itemClickHandle()}>
         {itemData?.picture_urls ? sliderElement : pictureElement}
         <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
         <div className="name" title={itemData?.name}>
