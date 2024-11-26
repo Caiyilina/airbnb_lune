@@ -1,33 +1,61 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import PropTypes from "prop-types";
 import RoomWrapper from "./style";
 import { Carousel, Rate } from "antd";
+import Indicator from "@/base-ui/indicator";
+import classNames from "classnames";
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%" } = props;
+  const [selectIndex, setSelectIndex] = useState(0);
+
+  const carouselChangeHandle = (index) => {
+    console.log("carouselChangeHandle", index);
+    setSelectIndex(index);
+  };
+
+  const pictureElement = (
+    <div className="cover">
+      <img src={itemData.picture_url} alt="" />
+    </div>
+  );
+  const sliderElement = (
+    <div className="slider">
+      {/* 自定义indicator */}
+      <div className="indicator">
+        <Indicator selectIndex={selectIndex}>
+          {itemData?.picture_urls?.map((item, index) => {
+            return (
+              <div className="dot-item" key={index}>
+                <span
+                  className={classNames("dot", {
+                    active: index === selectIndex,
+                  })}
+                ></span>
+              </div>
+            );
+          })}
+        </Indicator>
+      </div>
+      <Carousel arrows dots={false} afterChange={carouselChangeHandle}>
+        {itemData?.picture_urls?.map((item, index) => {
+          return (
+            <div className="cover" key={index}>
+              <img src={item} alt="" />
+            </div>
+          );
+        })}
+      </Carousel>
+    </div>
+  );
+
   return (
     <RoomWrapper
       itemWidth={itemWidth}
       descColor={itemData?.verify_info?.text_color || "#39576a"}
     >
       <div className="inner">
-        {itemData?.picture_urls ? (
-          <div className="swiper">
-            <Carousel arrows dots={true}>
-              {itemData?.picture_urls?.map((item, index) => {
-                return (
-                  <div className="cover" key={index}>
-                    <img src={item} alt="" />
-                  </div>
-                );
-              })}
-            </Carousel>
-          </div>
-        ) : (
-          <div className="cover">
-            <img src={itemData.picture_url} alt="" />
-          </div>
-        )}
+        {itemData?.picture_urls ? sliderElement : pictureElement}
         <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
         <div className="name" title={itemData?.name}>
           {itemData.name}

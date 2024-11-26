@@ -14,7 +14,6 @@ const Indicator = memo((props) => {
     // 2、content的宽度
     const contentWidth = contentRef.current.clientWidth;
     const contentScroll = contentRef.current.scrollWidth;
-    console.log(itemOffset, itemWidth, contentWidth);
 
     // 3、获取需要移动的距离
     let distance = itemOffset + itemWidth * 0.5 - contentWidth * 0.5;
@@ -24,7 +23,6 @@ const Indicator = memo((props) => {
       distance = contentScroll - contentWidth;
     }
 
-    console.log("3、获取需要移动的距离", distance);
     // 4、移动
     contentRef.current.style.transform = `translateX(-${distance}px)`;
   }, [selectIndex]);

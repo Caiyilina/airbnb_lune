@@ -14,6 +14,41 @@ const RoomWrapper = styled.div.withConfig({
     width: 100%;
   }
 
+  .slider {
+    position: relative;
+    cursor: pointer;
+
+    .indicator {
+      position: absolute;
+      z-index: 99;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+
+      width: 30%;
+      margin: 0 auto;
+      .dot-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+
+        .dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.8);
+          cursor: pointer;
+          &.active {
+            width: 8px;
+            height: 8px;
+            background-color: ${(props) => props.theme.color.primaryColor};
+          }
+        }
+      }
+    }
+  }
+
   .cover {
     position: relative;
     box-sizing: border-box;
