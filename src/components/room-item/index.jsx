@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import RoomWrapper from "./style";
-import { Rate } from "antd";
+import { Carousel, Rate } from "antd";
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%" } = props;
@@ -11,9 +11,23 @@ const RoomItem = memo((props) => {
       descColor={itemData?.verify_info?.text_color || "#39576a"}
     >
       <div className="inner">
-        <div className="cover">
-          <img src={itemData.picture_url} alt="" />
-        </div>
+        {itemData?.picture_urls ? (
+          <div className="swiper">
+            <Carousel arrows dots={true}>
+              {itemData?.picture_urls?.map((item, index) => {
+                return (
+                  <div className="cover" key={index}>
+                    <img src={item} alt="" />
+                  </div>
+                );
+              })}
+            </Carousel>
+          </div>
+        ) : (
+          <div className="cover">
+            <img src={itemData.picture_url} alt="" />
+          </div>
+        )}
         <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
         <div className="name" title={itemData?.name}>
           {itemData.name}
