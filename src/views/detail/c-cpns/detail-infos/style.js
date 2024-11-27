@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const DetailInfosWrapper = styled.div`
   margin: 20px 0;
   .desc {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
+    line-height: 22px;
   }
   .price {
     font-weight: 700;

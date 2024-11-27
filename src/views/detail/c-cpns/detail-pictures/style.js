@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const DetailPicturesWrapper = styled.div`
   /* position: absolute;
   top: 80px; */
-
+  position: relative;
   > .pictures {
     display: flex;
-    height: 400px;
+    height: 500px;
     overflow: hidden;
     border-radius: 20px;
     display: flex;
