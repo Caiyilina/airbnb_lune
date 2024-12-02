@@ -16,6 +16,8 @@ export const RightWrapper = styled.div`
     line-height: 18px;
     padding: 12px 15px;
     box-sizing: content-box;
+    color: ${(props) =>
+      props.theme.isAlpha ? "#fff" : props.theme.textColor.primaryColor};
     span {
       cursor: pointer;
       padding: 15px 10px;

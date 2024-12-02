@@ -12,6 +12,8 @@ import HomeSectionV2 from "./c-cpns/home-section-v2";
 import { isEmptyObject } from "@/utils/common";
 import HomeLongFor from "./c-cpns/home-longfor";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
+import AppHeader from "@/components/app-header";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Home = memo(() => {
   // 从redux中获取数据
@@ -39,10 +41,13 @@ const Home = memo(() => {
     // 派发异步事件 发起进行的网络请求
     // dispatch(fetchHomeDataAction());
     dispatch(fetchMultiHomeDataAction());
-  }, [dispatch]);
+
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true }));
+  }, []);
 
   return (
     <HomeWrapper>
+      <AppHeader></AppHeader>
       <HomeBanner></HomeBanner>
       <div className="content">
         {/* 你可能想去 */}

@@ -1,5 +1,10 @@
 import styled from "styled-components";
 export const EntireFilterWrapper = styled.div`
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 99;
   display: flex;
   align-items: center;
   height: 48px;

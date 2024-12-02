@@ -1,19 +1,32 @@
-import React, { memo, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import RoomWrapper from "./style";
 import { Carousel, Rate } from "antd";
 import Indicator from "@/base-ui/indicator";
 import classNames from "classnames";
+import IconArrowLeft from "@/assets/svg/icon-arrow-left";
+import IconArrowRight from "@/assets/svg/icon-arrow-right";
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%", itemClick } = props;
   const [selectIndex, setSelectIndex] = useState(0);
+  const sliderRef = useRef();
 
-  const carouselChangeHandle = (index) => {
-    console.log("carouselChangeHandle", index);
-    setSelectIndex(index);
-  };
+  /** 事件处理的逻辑 */
+  function controlClickHandle(isNext = true, event) {
+    // 上一个面板/下一个面板
+    isNext ? sliderRef.current.next() : sliderRef.current.prev();
 
+    // 最新的索引
+    let newIndex = isNext ? selectIndex + 1 : selectIndex - 1;
+    const length = itemData.picture_urls.length;
+    if (newIndex < 0) newIndex = length - 1;
+    if (newIndex > length - 1) newIndex = 0;
+    setSelectIndex(newIndex);
+
+    // 阻止事件冒泡
+    event.stopPropagation();
+  }
   const itemClickHandle = () => {
     itemClick && itemClick(itemData);
   };
@@ -25,6 +38,14 @@ const RoomItem = memo((props) => {
   );
   const sliderElement = (
     <div className="slider">
+      <div className="control">
+        <div className="btn left" onClick={(e) => controlClickHandle(false, e)}>
+          <IconArrowLeft width="30" height="30" />
+        </div>
+        <div className="btn right" onClick={(e) => controlClickHandle(true, e)}>
+          <IconArrowRight width="30" height="30" />
+        </div>
+      </div>
       {/* 自定义indicator */}
       <div className="indicator">
         <Indicator selectIndex={selectIndex}>
@@ -41,7 +62,7 @@ const RoomItem = memo((props) => {
           })}
         </Indicator>
       </div>
-      <Carousel arrows dots={false} afterChange={carouselChangeHandle}>
+      <Carousel dots={false} ref={sliderRef}>
         {itemData?.picture_urls?.map((item, index) => {
           return (
             <div className="cover" key={index}>
