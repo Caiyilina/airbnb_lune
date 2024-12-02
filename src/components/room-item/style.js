@@ -57,7 +57,7 @@ const RoomWrapper = styled.div.withConfig({
     }
     .indicator {
       position: absolute;
-      z-index: 99;
+      z-index: 9;
       bottom: 10px;
       left: 0;
       right: 0;

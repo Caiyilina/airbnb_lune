@@ -2,10 +2,7 @@ import React, { memo, useEffect } from "react";
 import HomeWrapper from "./style";
 import HomeBanner from "./c-cpns/home-banner";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import {
-  fetchHomeDataAction,
-  fetchMultiHomeDataAction,
-} from "@/store/modules/home";
+import { fetchMultiHomeDataAction } from "@/store/modules/home";
 
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
@@ -39,7 +36,6 @@ const Home = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     // 派发异步事件 发起进行的网络请求
-    // dispatch(fetchHomeDataAction());
     dispatch(fetchMultiHomeDataAction());
 
     dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true }));

@@ -17,12 +17,14 @@ const Detail = memo(() => {
   return (
     <DetailWrapper>
       <AppHeader></AppHeader>
-      <div className="title">
-        <h2>{detailInfo.name}</h2>
-        <div className="opt"></div>
+      <div className="detail-content">
+        <div className="detail-title">
+          <h2>{detailInfo.name}</h2>
+          <div className="opt"></div>
+        </div>
+        <DetailPictures />
+        <DetailInfos />
       </div>
-      <DetailPictures />
-      <DetailInfos />
     </DetailWrapper>
   );
 });

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   font-size: 14px;
 
   &.fixed {
@@ -17,9 +17,9 @@ export const HeaderWrapper = styled.div`
     transition: all 0.3s ease;
     background: ${(props) =>
       props.theme.isAlpha ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)"};
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #eee;
     border-bottom-color: ${(props) =>
-      props.theme.isAlpha ? "rgba(255,255,255,1)" : "rgba(255,255,255,0)"};
+      props.theme.isAlpha ? "rgba(233,233,233,0)" : "rgba(233,233,233,1)"};
     width: 100%;
     .top {
       display: flex;
